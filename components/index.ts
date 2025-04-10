@@ -1,1 +1,1 @@
-export { default as ErrorBoudaries } from './ErrorBoudaries';
+export { default as ErrorBoundaries } from './ErrorBoundaries';

@@ -1,9 +1,9 @@
 import { useLoginMutation } from "@/services/AuthApi";
 
-const useLogin = () => {
+export const useLogin = () => {
       const [login, { isLoading, error }] = useLoginMutation();
 
-      const handleLogin = async (values: { email: string; password: string }) => {
+      const handleSubmit = async (values: { email: string; password: string }) => {
             try {
                   const res = await login({
                         email: values.email,
@@ -19,5 +19,5 @@ const useLogin = () => {
             }
       };
 
-      return { handleLogin, isLoading, error };
+      return { handleSubmit, isLoading, error };
 }

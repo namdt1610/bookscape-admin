@@ -1,5 +1,5 @@
 'use client'
-import { Form, Input, Button, Alert, Divider } from 'antd'
+import { Form, Input, Button, Divider } from 'antd'
 import {
     UserOutlined,
     MailOutlined,
@@ -8,12 +8,12 @@ import {
     GithubOutlined,
     GoogleOutlined,
 } from '@ant-design/icons'
-import { Link } from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { useRegister } from '../hooks/useRegister'
 
 export default function RegisterForm() {
-    const { handleSubmit, isLoading, isError, form } = useRegister()
+    const { handleSubmit, isLoading, form } = useRegister()
 
     return (
         <div className="glassmorphism p-8 max-w-md w-full">
@@ -24,31 +24,13 @@ export default function RegisterForm() {
                 className="w-full"
             >
                 <motion.h1
-                    className="text-2xl font-bold mb-6 text-center"
+                    className="text-2xl font-bold mb-6 text-center text-black"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                 >
                     Create an Account
                 </motion.h1>
-
-                <AnimatePresence>
-                    {isError && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <Alert
-                                message={isError}
-                                type="error"
-                                showIcon
-                                className="mb-6 glassmorphism border-0"
-                            />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
 
                 <Form
                     form={form}
@@ -69,6 +51,7 @@ export default function RegisterForm() {
                         ]}
                     >
                         <Input
+                            allowClear
                             className="glass-input"
                             prefix={<UserOutlined className="text-gray-400" />}
                             placeholder="Full Name"
@@ -89,6 +72,7 @@ export default function RegisterForm() {
                         ]}
                     >
                         <Input
+                            allowClear
                             className="glass-input"
                             prefix={<MailOutlined className="text-gray-400" />}
                             placeholder="Email"
@@ -111,6 +95,7 @@ export default function RegisterForm() {
                         hasFeedback
                     >
                         <Input.Password
+                            allowClear
                             className="glass-input"
                             prefix={<LockOutlined className="text-gray-400" />}
                             placeholder="Password"
@@ -209,7 +194,7 @@ export default function RegisterForm() {
                         Already have an account?
                     </span>{' '}
                     <Link
-                        to="/login"
+                        href="/admin/login"
                         className="text-blue-600 hover:text-blue-800"
                     >
                         Login

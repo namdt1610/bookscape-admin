@@ -2,11 +2,12 @@
 import React, { Suspense } from 'react'
 import { Skeleton } from 'antd'
 import { motion } from 'framer-motion'
-import { RegisterForm } from './components'
-import { ErrorBoudaries } from '@/components'
+import { LoginForm } from './components'
+import { ErrorBoundaries } from '@/components'
 
-const Register: React.FC = () => {
+export default function LoginPage() {
     return (
+        <ErrorBoundaries>
             <Suspense fallback={<Skeleton active />}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -14,10 +15,10 @@ const Register: React.FC = () => {
                     transition={{ delay: 0.4 }}
                     className="flex items-center justify-center w-full h-screen"
                 >
-                    <RegisterForm />
+                    <LoginForm />
                 </motion.div>
             </Suspense>
+        </ErrorBoundaries>
     )
 }
 
-export default Register

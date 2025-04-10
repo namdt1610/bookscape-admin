@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { message, Form } from 'antd'
 import { useRegisterMutation } from '@/services/AuthApi'
 
